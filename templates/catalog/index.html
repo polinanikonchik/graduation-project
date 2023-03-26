@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<header>
+  <div class="bg-dark collapse" id="navbarHeader" style="">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4 offset-md-1 py-4">
+          <ul class="list-unstyled">
+          </a></ul><a href="#" class="text-white">
+        </a></div><a href="#" class="text-white">
+      </a></div><a href="#" class="text-white">
+    </a></div><a href="#" class="text-white">
+  </a></div><a href="#" class="text-white">
+  </a><div class="navbar navbar-dark bg-dark shadow-sm"><a href="#" class="text-white">
+    </a><div class="container"><a href="#" class="text-white">
+      </a><a href="#" class="navbar-brand d-flex align-items-center">
+<!--          <strong>{% if manufacturer %}'s Catalog {% elif country %} {{ country }}'s Catalog {% else %} Product Catalog{% endif %}</strong>-->
+      </a>
+    </div>
+  </div>
+</header>
+<div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+        {% for product in products %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="{{ product.image.url }}" width="100%" height="400px">
+            <div class="card-body">
+              <p class="card-text">Title: {{product.title}}</p>
+              <p class="card-text">Manufacturer: {{product.manufacturer}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a type="button" class="btn btn-sm btn-outline-secondary" href="{{ product.get_product_url }}">Show</a>
+                  <a type="button" class="btn btn-primary" href="{{ product.add_to_cart }}">Add to card</a>
+                </div>
+                <span class="badge bg-success">{{product.price}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
